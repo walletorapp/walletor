@@ -71,14 +71,17 @@ that a payout is funded; claims depend on funded, activated entitlements.
 ```sh
 npm run cf-typegen
 npm run typecheck
+npm ci --prefix apps/docs
+npm run lint
 npm test
 npm run build
 npm run launch:safety
 ```
 
 Browser checks use Playwright: `npx playwright install chromium`, then
-`npm run test:e2e`. The documentation app has its own dependencies:
-`npm ci --prefix apps/docs`, then `npm run docs:build`.
+`npm run test:e2e`. The lint check also reads the documentation app's TypeScript
+configuration, so install its dependencies as shown above. Run `npm run docs:build`
+to build the documentation site.
 
 ## Documentation
 
