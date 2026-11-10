@@ -1,0 +1,61 @@
+---
+title: एकीकरण
+description: The external protocols and infrastructure used by Walletor.
+---
+
+:::note
+14 सितंबर 2026 का अपडेट: अनुवाद अपडेट होने तक यह पेज नवीनतम अंग्रेज़ी संस्करण दिखाता है।
+:::
+
+<div lang="en" dir="ltr">
+
+## Jupiter
+
+Walletor uses Jupiter Swap V2 `/swap/v2/order` and `/execute` for Solana route discovery and transaction execution. The order endpoint is the source of truth for current tradability.
+
+Jupiter Tokens V2 supplies token metadata and indexed discovery data. Token metadata can appear at a different time from routing availability because the systems use separate pipelines.
+
+## Helius
+
+Walletor uses a Helius mainnet webhook for confirmed Pump.fun token discovery and Helius asset enrichment as a metadata fallback for exact mint lookups. The webhook improves coverage when many tokens launch between periodic Jupiter recent-feed polls.
+
+Helius does not decide whether a pair is tradable. Jupiter's executable order remains the routing authority.
+
+## Solana
+
+Walletor operates on Solana mainnet. Wallet connections use the Wallet Standard where available, and all swap transactions require user approval in the connected wallet.
+
+## Cloudflare
+
+Cloudflare Workers host the server boundary, secrets, upstream validation, normalized APIs, scheduled reconciliation, and asset delivery. D1 stores the indexed audit mirror, while a SQLite-backed Durable Object serializes Prize Pool accounting writes.
+
+## Solscan
+
+Walletor links confirmed public transaction signatures and validated wallet addresses to Solscan for independent inspection.
+
+## MagicBlock and Rewards Program
+
+Walletor's MagicBlock adapter is deployed on mainnet for the 22 September early-close round and subsequent rolling 24-hour rounds. A finalized MagicBlock callback and a successful USDC winner claim were verified on 22 September 2026. It binds a locked snapshot to a Solana draw account, requests randomness once, and accepts an authenticated oracle callback. The operator signs the request; no separate reveal signature is needed. Walletor verifies finalized evidence and applies its published winner formula.
+
+Prizes remain in **USDC** through the existing shared Rewards Program. **SOL** pays deployment rent, randomness requests, account rent, and network fees. MagicBlock does not hold the prize pool. Funding still requires the operator's wallet signature; automatic treasury spending remains disabled.
+
+Historical rounds keep their original evidence and existing claims. The shared claim program's source-to-binary verification remains unresolved; see [current product status](/getting-started/product-status/).
+
+[MagicBlock integration guide](https://docs.magicblock.gg/pages/verifiable-randomness-functions-vrfs/how-to-guide/quickstart)
+
+## AML documentation
+
+Runtime wallet screening is disabled. The [AML controls page](/legal/aml-sanctions/) documents proposed controls and limitations; it does not mean swaps or admin funding currently perform sanctions screening.
+
+## Separation of responsibilities
+
+| System          | Responsibility                                        |
+| --------------- | ----------------------------------------------------- |
+| Jupiter         | Routing, executable orders, and execution result      |
+| Helius          | Real-time launch discovery and metadata fallback      |
+| Wallet          | User authorization and transaction signature          |
+| Walletor Worker | Validation, fee proof, accounting, and normalized API |
+| Solana          | Final public transaction state                        |
+| Solscan         | Independent explorer interface                        |
+
+</div>

@@ -1,0 +1,386 @@
+.walletor-airdrop-page {
+  --air-green: #39e6a6;
+  --air-border: rgba(105, 151, 211, 0.2);
+}
+
+.walletor-airdrop-main {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 14px;
+}
+
+.airdrop-simple {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.75fr);
+  align-items: center;
+  gap: clamp(34px, 6vw, 90px);
+  min-height: 530px;
+  overflow: hidden;
+  border: 1px solid var(--air-border);
+  border-radius: 30px;
+  background:
+    radial-gradient(
+      circle at 86% 26%,
+      rgba(38, 211, 156, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(135deg, rgba(9, 20, 38, 0.98), rgba(3, 9, 19, 0.98));
+  padding: clamp(40px, 6vw, 76px);
+}
+
+.airdrop-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(57, 230, 166, 0.25);
+  border-radius: 999px;
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.08);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.airdrop-live-pill > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--air-green);
+  box-shadow: 0 0 12px var(--air-green);
+  animation: airdrop-live-pulse 1.8s ease-in-out infinite;
+}
+
+.airdrop-simple-copy h1 {
+  max-width: 760px;
+  margin: 31px 0 0;
+  color: #f8fbff;
+  font-size: clamp(58px, 7vw, 104px);
+  font-weight: 870;
+  letter-spacing: -0.07em;
+  line-height: 0.92;
+}
+
+.airdrop-simple-copy h1 em {
+  color: var(--air-green);
+  font-style: normal;
+}
+
+.airdrop-simple-copy > p {
+  max-width: 580px;
+  margin: 25px 0 0;
+  color: #92a4bc;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.55;
+}
+
+.airdrop-main-action {
+  width: fit-content;
+  min-height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 0 22px;
+  border: 1px solid #63efba;
+  border-radius: 15px;
+  color: #04140e;
+  background: var(--air-green);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 850;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    filter 160ms ease;
+}
+
+.airdrop-main-action.is-complete {
+  color: #d1fae5;
+  background: rgba(16, 185, 129, 0.16);
+}
+
+.airdrop-main-action svg {
+  width: 18px;
+}
+
+.airdrop-main-action svg:last-child {
+  margin-left: 7px;
+}
+
+.airdrop-main-action:is(:hover, :focus-visible) {
+  outline: 0;
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.airdrop-status-card {
+  overflow: hidden;
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  border-radius: 24px;
+  background: rgba(4, 12, 25, 0.82);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.airdrop-status-card.is-complete {
+  border-color: rgba(57, 230, 166, 0.38);
+}
+
+.airdrop-status-topline,
+.airdrop-status-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px 20px;
+}
+
+.airdrop-status-topline {
+  border-bottom: 1px solid rgba(96, 165, 250, 0.12);
+  color: #71839c;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.airdrop-status-topline strong {
+  color: var(--air-green);
+}
+
+.airdrop-status-main {
+  min-height: 170px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 28px 24px;
+}
+
+.airdrop-status-symbol {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(57, 230, 166, 0.23);
+  border-radius: 17px;
+  color: var(--air-green);
+  background: rgba(16, 185, 129, 0.09);
+}
+
+.airdrop-status-symbol svg {
+  width: 25px;
+}
+
+.airdrop-status-main h2 {
+  margin: 0;
+  color: #f3f8ff;
+  font-size: 23px;
+  letter-spacing: -0.035em;
+}
+
+.airdrop-status-main p {
+  margin: 7px 0 0;
+  color: #7689a3;
+  font-size: 12px;
+}
+
+.airdrop-status-footer {
+  border-top: 1px solid rgba(96, 165, 250, 0.12);
+  color: #7f92ab;
+}
+
+.airdrop-status-footer span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+}
+
+.airdrop-status-footer svg {
+  width: 15px;
+}
+
+.airdrop-status-footer strong {
+  color: #dceaff;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+}
+
+.airdrop-simple-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.airdrop-simple-facts article {
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: center;
+  gap: 3px 12px;
+  border: 1px solid var(--air-border);
+  border-radius: 18px;
+  background: rgba(6, 14, 27, 0.82);
+  padding: 17px 20px;
+}
+
+.airdrop-simple-facts svg {
+  width: 20px;
+  grid-row: 1 / 3;
+  align-self: center;
+  color: var(--air-green);
+}
+
+.airdrop-simple-facts span {
+  color: #71839c;
+  font-size: 10px;
+}
+
+.airdrop-simple-facts strong {
+  color: #edf5ff;
+  font-size: 18px;
+}
+
+.airdrop-simple-steps {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid var(--air-border);
+  border-radius: 18px;
+  background: rgba(5, 13, 25, 0.72);
+  padding: 16px 22px;
+}
+
+.airdrop-simple-steps > span {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  color: #062219;
+  background: var(--air-green);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.airdrop-simple-steps > strong {
+  color: #d6e3f3;
+  font-size: 13px;
+}
+
+.airdrop-simple-steps > i {
+  width: clamp(22px, 6vw, 85px);
+  height: 1px;
+  background: rgba(96, 165, 250, 0.22);
+}
+
+.airdrop-simple-notice {
+  margin: 3px 0 0;
+  padding: 0 18px 10px;
+  color: #53657c;
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.airdrop-simple-notice a {
+  color: #86b7f5;
+}
+
+@keyframes airdrop-live-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.16);
+  }
+}
+
+@media (max-width: 880px) {
+  .walletor-airdrop-main {
+    gap: 10px;
+  }
+
+  .airdrop-simple {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    min-height: 0;
+    border-radius: 24px;
+    padding: 36px 24px 24px;
+  }
+
+  .airdrop-simple-copy h1 {
+    font-size: clamp(56px, 15vw, 84px);
+  }
+
+  .airdrop-status-main {
+    min-height: 145px;
+  }
+}
+
+@media (max-width: 560px) {
+  .walletor-airdrop-page .concept-main {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .airdrop-simple {
+    padding: 28px 17px 17px;
+  }
+
+  .airdrop-simple-copy h1 {
+    margin-top: 24px;
+    font-size: clamp(48px, 15vw, 68px);
+  }
+
+  .airdrop-simple-copy > p {
+    margin-top: 19px;
+    font-size: 15px;
+  }
+
+  .airdrop-main-action {
+    width: 100%;
+    margin-top: 23px;
+  }
+
+  .airdrop-simple-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .airdrop-simple-facts article {
+    min-height: 76px;
+  }
+
+  .airdrop-simple-steps {
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 14px;
+  }
+
+  .airdrop-simple-steps > i {
+    min-width: 14px;
+  }
+
+  .airdrop-simple-steps > strong {
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .airdrop-live-pill > span {
+    animation: none;
+  }
+
+  .airdrop-main-action {
+    transition: none;
+  }
+}

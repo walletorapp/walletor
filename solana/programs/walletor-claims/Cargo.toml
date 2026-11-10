@@ -1,0 +1,26 @@
+[package]
+name = "walletor-claims"
+version = "0.1.0"
+description = "Walletor's devnet-first, verifiable SOL Prize Pool claim program"
+edition = "2021"
+license = "UNLICENSED"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "walletor_claims"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "switchboard-on-demand/idl-build"]
+
+[dependencies]
+anchor-lang = { version = "=0.31.1", features = ["init-if-needed"] }
+switchboard-on-demand = { version = "=0.13.0", features = ["anchor"] }
+
+[dev-dependencies]
+hex = "=0.4.3"

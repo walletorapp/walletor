@@ -1,0 +1,15 @@
+<svg width="236" height="48" viewBox="0 0 236 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="walletor-blue" x1="3" y1="5" x2="42" y2="43" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6CD8FF"/>
+      <stop offset="0.52" stop-color="#3297FF"/>
+      <stop offset="1" stop-color="#2357EB"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 3L45 14.7L36.7 35.2L24 45L3 24L10.5 10.5L24 3Z" fill="#061127" stroke="#265DAD"/>
+  <path d="M9.2 17.2L23.8 7.6L37.8 15.4L31.8 20.1L23.8 15.7L15.8 21L27.5 32.8L23.3 38.7L9.2 24.5V17.2Z" fill="url(#walletor-blue)"/>
+  <path d="M25.3 15.1L33.4 9.8L41.4 15.7L29.9 28.3L24.6 23L31.8 15.8L28.8 13.7L25.3 15.1Z" fill="#F5F8FF"/>
+  <text x="58" y="29" fill="#F5F8FF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="720" letter-spacing="-0.5">Walletor</text>
+  <rect x="155" y="11" width="71" height="26" rx="13" fill="#0B1932" stroke="#214E86"/>
+  <text x="190.5" y="28.5" text-anchor="middle" fill="#70CFFF" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">DOCS</text>
+</svg>

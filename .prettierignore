@@ -1,0 +1,7 @@
+dist
+node_modules
+coverage
+playwright-report
+test-results
+.astro
+worker-configuration.d.ts

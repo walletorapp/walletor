@@ -1,0 +1,66 @@
+---
+title: دليل الشفافية
+description: Verify Walletor rounds, recipients, checksums, and Solana evidence.
+---
+
+:::note
+تحديث 14 سبتمبر 2026: تعرض هذه الصفحة النسخة الإنجليزية الحالية إلى حين تحديث الترجمة.
+:::
+
+<div lang="en" dir="ltr">
+
+:::note[MagicBlock migration]
+The MagicBlock adapter is deployed on Solana mainnet. The 22 September early-close round and subsequent rolling 24-hour rounds use MagicBlock. After the early close, each new round ends 24 hours after the previous one. A finalized MagicBlock callback and a successful USDC winner claim were verified on 22 September 2026. Historical rounds retain their original evidence and are not rerolled.
+:::
+
+Walletor is designed so public evidence—not trust in a team statement—explains every finalized Prize Pool round.
+
+## Public round data
+
+The Prize Pool page exposes a UTC calendar of finalized rounds. Select a date to inspect the corresponding record, including:
+
+- Round identifier and exact UTC window
+- Locked Prize Pool estimate
+- Eligible wallet count
+- Allocation status
+- Participant checksum and Merkle root
+- Frozen winner count and fee-contribution-based lucky weights
+- MagicBlock request and callback evidence after activation; historical provider evidence for earlier rounds
+- Winner wallets, gross and net USDC amounts, the 2.50% claim fee, and claim status when available
+- Solana transaction signatures when payouts exist
+
+## On-chain verification
+
+Solscan links are constructed only from contract-validated Solana addresses and real transaction signatures. A link is evidence of an on-chain transaction, but you should still inspect the signer, token, amount, and confirmation state.
+
+## Append-only records
+
+Confirmed fee credits, WLT Points, round locks, allocations, and future payout events are stored as ledger events. Corrections require a new reversing entry; historical rows are not silently edited or deleted.
+
+## Draw commitments
+
+The canonical participant snapshot produces a deterministic SHA-256 checksum and Merkle root before randomness is committed. If a wallet, weight, or ordering were changed afterward, the recomputed evidence would not match. Each published winner includes the deterministic ticket and Merkle proof needed to verify it against the locked root.
+
+MagicBlock uses a request and authenticated callback flow. Walletor binds each request to its locked snapshot and verifies finalized evidence before using the result. Duplicate requests and replayed callbacks are rejected. See the [official integration guide](https://docs.magicblock.gg/pages/verifiable-randomness-functions-vrfs/how-to-guide/quickstart).
+
+## What the browser cannot do
+
+The browser cannot create or modify authoritative swaps, fees, balances, allocations, claims, or payout records. Only verified backend execution paths can write the ledger.
+
+:::note
+Funding and claim signatures appear when those transactions exist. An allocation, funded entitlement, submitted claim, and confirmed claim are distinct states. The operator currently approves funding; a round closing is not itself a completed payout.
+:::
+
+</div>
+
+## Verified mainnet example
+
+The 22 September 2026 early-close round completed a real MagicBlock draw and USDC claim:
+
+- [MagicBlock request](https://solscan.io/tx/36dJYprpMc2axLjaxwkpqcZGmtJSZabK57Po8jpya9RwyeZTRvYTpqSRpoqSZ2WD84QQUyjkPUEtGrdtJSSyshMp)
+- [Finalized oracle callback](https://solscan.io/tx/55rhVp3UkiqUyj1Ypu48euw6j7KaWdskpq2hLhwTMjyVEuaXirzkXQsy6sUfKTJUA8ySMpYgnU53dBZGxZonrsw9)
+- [Successful winner claim: 0.08775 USDC](https://solscan.io/tx/5CjcrjhXDhJd2Ge8tknRk8cSMii6JG1hdQvKwawpCtAPnPWB2teY9fQhp8dqJSssY2eM1xoqKfpxC4zaRV3he7jY)
+
+This round had one eligible wallet. It demonstrates the request, callback and
+payment flow, not a live selection among multiple competing wallets. MagicBlock
+provides randomness; Walletor applies the published winner rules.

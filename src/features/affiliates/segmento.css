@@ -1,0 +1,80 @@
+.segmento-privacy button {
+  padding: 10px 16px;
+  min-height: 44px;
+  border: 1px solid #567497;
+  border-radius: 8px;
+  background: #172c44;
+  color: #eef5ff;
+  cursor: pointer;
+}
+.influencer-invite {
+  margin: 12px auto;
+  max-width: 760px;
+  padding: 16px;
+  border: 1px solid #567497;
+  border-radius: 12px;
+  background: #102338;
+  color: #eef5ff;
+  line-height: 1.6;
+}
+.influencer-invite button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #8dd9ff;
+  color: #07111e;
+  cursor: pointer;
+}
+.influencer-invite :focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+.influencer-page label {
+  display: grid;
+  gap: 6px;
+  margin-block: 12px;
+}
+.influencer-page input {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #567497;
+  border-radius: 8px;
+  background: #102338;
+  color: #eef5ff;
+}
+.influencer-page .admin-table-wrap {
+  overflow-x: auto;
+}
+.influencer-page td,
+.influencer-page th {
+  padding: 10px;
+  text-align: left;
+}
+.influencer-page code {
+  overflow-wrap: anywhere;
+}
+.segmento-privacy a {
+  color: #82ceff;
+  text-decoration: underline;
+}
+.segmento-privacy :focus-visible {
+  outline: 2px solid #82ceff;
+  outline-offset: 3px;
+}
+.segmento-privacy {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  line-height: 1.7;
+  color: #eef5ff;
+}
+.segmento-privacy h1 {
+  font-size: 32px;
+  margin-top: 24px;
+}
+.segmento-privacy p {
+  margin: 20px 0;
+}
+.segmento-privacy button {
+  margin: 0 12px 12px 0;
+}

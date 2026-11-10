@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "walletor-docs",
+  "compatibility_date": "2026-08-31",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./dist",
+  },
+  "routes": [
+    {
+      "pattern": "www.docs.walletor.com",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "docs.walletor.com",
+      "custom_domain": true,
+    },
+  ],
+}

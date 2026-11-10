@@ -1,0 +1,131 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@layer base {
+  .walletor-design-preview button,
+  .walletor-design-preview input {
+    appearance: none;
+  }
+
+  .walletor-design-preview button {
+    background-color: transparent;
+    border-width: 0;
+    border-style: solid;
+  }
+}
+
+.walletor-design-preview {
+  --preview-blue: #3b82f6;
+  --preview-cyan: #22d3ee;
+  color-scheme: dark;
+  font-family: "Geist", Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.preview-vault-aura {
+  background: radial-gradient(
+    circle,
+    rgba(34, 211, 238, 0.2) 0%,
+    rgba(37, 99, 235, 0.12) 43%,
+    transparent 70%
+  );
+  filter: blur(18px);
+}
+
+.preview-prize-vault {
+  background: radial-gradient(
+    circle at 48% 43%,
+    rgba(15, 38, 68, 0.34),
+    rgba(4, 11, 26, 0.75) 74%
+  );
+  border: 1px solid rgba(125, 211, 252, 0.3);
+  box-shadow:
+    inset 0 0 42px rgba(2, 6, 23, 0.75),
+    inset 16px 13px 30px rgba(125, 211, 252, 0.08),
+    0 0 45px rgba(37, 99, 235, 0.16);
+  transform-style: preserve-3d;
+}
+
+.preview-vault-depth {
+  background:
+    radial-gradient(
+      circle at 26% 18%,
+      rgba(255, 255, 255, 0.12),
+      transparent 19%
+    ),
+    radial-gradient(
+      circle at 68% 73%,
+      rgba(14, 165, 233, 0.13),
+      transparent 34%
+    ),
+    radial-gradient(circle at 50% 50%, transparent 48%, rgba(2, 6, 23, 0.5) 84%);
+}
+
+.preview-cash-orbit {
+  border: 1px solid rgba(125, 211, 252, 0.09);
+  box-shadow:
+    inset 0 0 14px rgba(37, 99, 235, 0.035),
+    0 0 12px rgba(34, 211, 238, 0.025);
+}
+
+.preview-vault-light {
+  background: conic-gradient(
+    from 30deg,
+    transparent 0deg,
+    rgba(125, 211, 252, 0.17) 42deg,
+    transparent 92deg,
+    rgba(59, 130, 246, 0.1) 206deg,
+    transparent 268deg
+  );
+  filter: blur(10px);
+  mix-blend-mode: screen;
+}
+
+.preview-vault-glass {
+  background:
+    linear-gradient(
+      128deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.025) 22%,
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 28% 12%,
+      rgba(224, 242, 254, 0.28),
+      transparent 23%
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+    inset -14px -18px 28px rgba(2, 6, 23, 0.25);
+}
+
+.preview-vault-rim {
+  border: 1px solid rgba(147, 197, 253, 0.33);
+  box-shadow:
+    inset 0 0 0 5px rgba(15, 23, 42, 0.16),
+    inset 0 0 22px rgba(56, 189, 248, 0.08),
+    0 0 12px rgba(59, 130, 246, 0.2);
+}
+
+.preview-vault-value {
+  background: linear-gradient(
+    145deg,
+    rgba(2, 6, 23, 0.54),
+    rgba(15, 23, 42, 0.34)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 40px rgba(2, 6, 23, 0.28),
+    0 0 24px rgba(59, 130, 246, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .walletor-design-preview *,
+  .walletor-design-preview *::before,
+  .walletor-design-preview *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

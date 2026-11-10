@@ -1,0 +1,37 @@
+---
+title: Découverte et routage
+description: Comment Walletor trouve de nouveaux jetons Solana et décide s'ils peuvent être échangés.
+---
+
+Walletor maintient l'autorité de découverte et d'échange de jetons séparément. Trouver un jeton ne signifie pas qu'il existe un itinéraire.
+
+## Nouvelle découverte
+
+Walletor utilise un webhook confirmé Helius regardant le programme officiel Pump.fun pour ajouter de nouveaux lancements à son index de recherche D1. Cela évite de s'appuyer sur une petite fenêtre de vote qui peut manquer les lancements pendant les périodes de grand volume.
+
+L'événement entrant est validé avant le stockage, y compris les adresses Solana, signature de transaction, discriminateur d'instructions, champs d'instructions et URI métadonnées.
+
+## enrichissement des métadonnées
+
+Jupiter Tokens V2 fournit des informations indexées telles que nom, symbole, URL de l'image, état de vérification, activité, prix et liquidité quand disponible. Walletor peut rechercher Jupiter directement par menthe lorsqu'un utilisateur colle une adresse.
+
+Les métadonnées et le routage sont des pipelines distincts. Un marché peut devenir routable avant que des métadonnées complètes ne soient disponibles.
+
+## Source de vérité
+
+Jupiter `/swap/v2/order` est la source de vérité pour savoir si la paire et la quantité choisies sont négociables maintenant. Walletor permet l'action swap seulement après que Jupiter retourne un ordre exécutable.
+
+## Pump.fun cycle de vie
+
+- Les jetons de liaison-courbe pré-migration peuvent être acheminés vers Jupiter lorsqu'un ordre existe.
+- Les pools diplômés sont récupérés automatiquement après la migration.
+- Un jeton qui n'est pas diplômé peut abandonner le routage après la période de grâce basée sur l'âge de Jupiter.
+- Un jeton restant visible dans la recherche ne garantit pas une route active.
+
+## Retours d'images
+
+Les éditeurs symboliques contrôlent une grande partie de leurs métadonnées. Walletor tente d'abord Jupiter métadonnées et peut utiliser Helius enrichissement pour des recherches exactes de menthe. Si une image distante est manquante, mal formée, bloquée ou indisponible, l'interface affiche un retour de texte stable au lieu de briser l'identité symbolique.
+
+:::note[Avis de traduction]
+Cette traduction est fournie par commodité. En cas de différence avec la version anglaise, la version anglaise constitue la source officielle.
+:::

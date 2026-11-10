@@ -1,0 +1,37 @@
+---
+title: Zbulimi & Routsing
+description: Si Walletor gjen Solana shenja të reja dhe vendos nëse mund të shkëmbehen.
+---
+
+Walletor vazhdon të zbulojë dhe të shkëmbejë autoritetin. Të gjesh një shenjë nuk do të thotë se ekziston një rrugë.
+
+## Zbulim i ri
+
+Walletor përdor një webhook të konfirmuar Helius duke shikuar programin zyrtar Pump.fun për të shtuar nisjen e re tek indeksi i kërkimit D1. Kjo shmang mbështetjen në një dritare të vogël votimi që mund të humbasë nisjen gjatë periudhave me kosto të lartë.
+
+Veprimtaria në hyrje është e vlefshme përpara ruajtjes, duke përfshirë adresën Solana, nënshkrimin e transaksioneve, diskriminuesin e mësimit, fushat e mësimit dhe URI e metadatës.
+
+## pasurimi i Metadatës
+
+Jupiter Tokens V2 furnizime të indeksuara të tilla si emri, simboli, URL e figurave, gjendja e verifikimit, aktiviteti, çmimi dhe likuiditeti kur është në dispozicion. Walletor mund të kërkojë Jupiter direkt nga menteta kur një përdorues ngjit një adresë.
+
+Metadata dhe daljet janë tubacione më vete. Një treg mund të bëhet i pandryshueshëm para se të gjendet metadata e plotë.
+
+## Burimi i së vërtetës i besueshëm
+
+Jupiter `/swap/v2/order` është burimi i së vërtetës nëse çifti dhe shuma e zgjedhur janë të shpueshme tani. Walletor mundëson shkëmbimin e veprimit vetëm pasi Jupiter të kthehet një urdhër i ekzekutueshëm.
+
+## Pump.fun Cikli jetësor
+
+- Shenjat para-migruese të lidhjes mund të hiqen nëpërmjet Jupiter kur ekziston një urdhër.
+- Pishinat e diplomuar mblidhen automatikisht pas migrimit.
+- Një shenjë që nuk është diplomuar mund të heqë dorë pas periudhës së mospagimit me bazë moshën Jupiter.
+- Një shenjë që mbetet e dukshme në kërkim nuk garanton një rrugë aktive.
+
+## Rezultatet e figurës
+
+Botuesit e Tokenit kontrollojnë pjesën më të madhe të metadatës së tyre. Walletor përpjekje Jupiter metadata së pari dhe mund të përdorë Helius pasurim për syt e saktë. Nëse mungon një figurë e largët, e keqformuar, e bllokuar ose jo, ndërfaqja tregon një përgjigje të qëndrueshme teksti në vend që të thyejë identitetin simbolik.
+
+:::note[Njoftim për përkthimin]
+Ky përkthim ofrohet për lehtësi. Nëse ka dallime me versionin në anglisht, versioni në anglisht është burimi zyrtar.
+:::

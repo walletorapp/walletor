@@ -1,0 +1,116 @@
+---
+import DefaultFooter from "@astrojs/starlight/components/Footer.astro";
+
+const footerTranslations = {
+  en: {
+    notice:
+      "Walletor is a non-custodial software interface. Digital-asset transactions can be volatile, irreversible, and may result in a total loss. WLT Points and Prize Pool eligibility do not guarantee tokens, value, winnings, or a payout. Claims are available only for reviewed, funded, and activated distributions.",
+    navLabel: "Legal and safety links",
+    legal: "Legal disclaimer",
+    risk: "Risk disclosure",
+    security: "Security model",
+    open: "Open Walletor",
+  },
+  es: {
+    notice:
+      "Walletor es una interfaz de software no custodial. Las transacciones con activos digitales pueden ser volátiles e irreversibles y pueden provocar una pérdida total. Los Puntos WLT y la elegibilidad para el fondo de premios no garantizan tokens, valor, premios ni pagos. Los retiros no están disponibles durante la beta.",
+    navLabel: "Enlaces legales y de seguridad",
+    legal: "Aviso legal",
+    risk: "Divulgación de riesgos",
+    security: "Modelo de seguridad",
+    open: "Abrir Walletor",
+  },
+  hi: {
+    notice:
+      "Walletor एक गैर-कस्टोडियल सॉफ़्टवेयर इंटरफ़ेस है। डिजिटल-एसेट लेनदेन अस्थिर और अपरिवर्तनीय हो सकते हैं तथा पूरी हानि हो सकती है। WLT पॉइंट्स और पुरस्कार पूल पात्रता किसी टोकन, मूल्य, जीत या भुगतान की गारंटी नहीं देते। बीटा के दौरान निकासी उपलब्ध नहीं है।",
+    navLabel: "कानूनी और सुरक्षा लिंक",
+    legal: "कानूनी अस्वीकरण",
+    risk: "जोखिम प्रकटीकरण",
+    security: "सुरक्षा मॉडल",
+    open: "Walletor खोलें",
+  },
+  ar: {
+    notice:
+      "Walletor واجهة برمجية غير احتجازية. قد تكون معاملات الأصول الرقمية متقلبة وغير قابلة للعكس وقد تؤدي إلى خسارة كاملة. لا تضمن نقاط WLT أو أهلية مجموعة الجوائز أي رموز أو قيمة أو أرباح أو مدفوعات. تظل عمليات السحب غير متاحة خلال المرحلة التجريبية.",
+    navLabel: "روابط الشؤون القانونية والسلامة",
+    legal: "إخلاء المسؤولية القانونية",
+    risk: "الإفصاح عن المخاطر",
+    security: "نموذج الأمان",
+    open: "فتح Walletor",
+  },
+  bn: {
+    notice:
+      "Walletor একটি নন-কাস্টডিয়াল সফটওয়্যার ইন্টারফেস। ডিজিটাল সম্পদের লেনদেন অস্থির ও অপরিবর্তনীয় হতে পারে এবং সম্পূর্ণ ক্ষতি ঘটতে পারে। WLT পয়েন্ট বা পুরস্কার পুলের যোগ্যতা কোনো টোকেন, মূল্য, পুরস্কার বা অর্থপ্রদানের নিশ্চয়তা দেয় না। বিটা চলাকালে উত্তোলন উপলভ্য নয়।",
+    navLabel: "আইনি ও নিরাপত্তা লিংক",
+    legal: "আইনি দাবিত্যাগ",
+    risk: "ঝুঁকি প্রকাশ",
+    security: "নিরাপত্তা মডেল",
+    open: "Walletor খুলুন",
+  },
+  pt: {
+    notice:
+      "Walletor é uma interface de software não custodial. As transações de ativos digitais podem ser voláteis e irreversíveis e podem resultar em perda total. Pontos WLT e elegibilidade para o fundo de prêmios não garantem tokens, valor, prêmios ou pagamentos. Os saques permanecem indisponíveis durante a fase beta.",
+    navLabel: "Links jurídicos e de segurança",
+    legal: "Aviso legal",
+    risk: "Divulgação de riscos",
+    security: "Modelo de segurança",
+    open: "Abrir Walletor",
+  },
+  fr: {
+    notice:
+      "Walletor est une interface logicielle non dépositaire. Les transactions d’actifs numériques peuvent être volatiles et irréversibles et entraîner une perte totale. Les Points WLT et l’admissibilité à la cagnotte ne garantissent aucun jeton, aucune valeur, aucun gain ni paiement. Les retraits restent indisponibles pendant la phase bêta.",
+    navLabel: "Liens juridiques et de sécurité",
+    legal: "Mentions légales",
+    risk: "Divulgation des risques",
+    security: "Modèle de sécurité",
+    open: "Ouvrir Walletor",
+  },
+  ur: {
+    notice:
+      "Walletor ایک غیر تحویلی سافٹ ویئر انٹرفیس ہے۔ ڈیجیٹل اثاثوں کی ٹرانزیکشنز غیر مستحکم اور ناقابل واپسی ہو سکتی ہیں اور مکمل نقصان کا باعث بن سکتی ہیں۔ WLT پوائنٹس یا انعامی پول کی اہلیت کسی ٹوکن، قدر، جیت یا ادائیگی کی ضمانت نہیں دیتی۔ بیٹا کے دوران رقم نکالنا دستیاب نہیں ہے۔",
+    navLabel: "قانونی اور حفاظتی روابط",
+    legal: "قانونی دستبرداری",
+    risk: "خطرات کا انکشاف",
+    security: "سیکیورٹی ماڈل",
+    open: "Walletor کھولیں",
+  },
+  id: {
+    notice:
+      "Walletor adalah antarmuka perangkat lunak nonkustodial. Transaksi aset digital dapat bergejolak dan tidak dapat dibatalkan serta dapat mengakibatkan kerugian total. Poin WLT dan kelayakan kumpulan hadiah tidak menjamin token, nilai, kemenangan, atau pembayaran. Penarikan tetap tidak tersedia selama versi beta.",
+    navLabel: "Tautan hukum dan keamanan",
+    legal: "Penafian hukum",
+    risk: "Pengungkapan risiko",
+    security: "Model keamanan",
+    open: "Buka Walletor",
+  },
+  sq: {
+    notice:
+      "Walletor është një ndërfaqe softuerike jo-kujdestare. Transaksionet e aseteve digjitale mund të jenë të paqëndrueshme dhe të pakthyeshme dhe mund të sjellin humbje të plotë. Pikët WLT dhe kualifikimi për fondin e çmimeve nuk garantojnë tokenë, vlerë, fitime ose pagesë. Tërheqjet mbeten të padisponueshme gjatë fazës beta.",
+    navLabel: "Lidhje ligjore dhe sigurie",
+    legal: "Mohimi ligjor",
+    risk: "Deklarimi i rrezikut",
+    security: "Modeli i sigurisë",
+    open: "Hap Walletor",
+  },
+} as const;
+
+const routeLocale = Astro.locals.starlightRoute.locale;
+const locale = routeLocale && routeLocale !== "root" ? routeLocale : "en";
+const content = footerTranslations[locale as keyof typeof footerTranslations] ?? footerTranslations.en;
+const prefix = locale === "en" ? "" : `/${locale}`;
+---
+
+<DefaultFooter />
+
+<section class="walletor-legal-footer" aria-label={content.navLabel}>
+  <p>{content.notice}</p>
+  <nav aria-label={content.navLabel}>
+    <a href={`${prefix}/legal/disclaimer/`}>{content.legal}</a>
+    <a href={`${prefix}/legal/risk-disclosure/`}>{content.risk}</a>
+    <a href="/legal/aml-sanctions/">AML &amp; sanctions (English)</a>
+    <a href={`${prefix}/security/security-model/`}>{content.security}</a>
+    <a href="https://walletor.com">{content.open}</a>
+    <a href="https://t.me/walletorswap" target="_blank" rel="noopener noreferrer">Telegram</a>
+    <a href="https://x.com/walletorai" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+  </nav>
+</section>

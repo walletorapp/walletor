@@ -1,0 +1,30 @@
+---
+title: Screening data notice
+description: Information recorded by Walletor's sanctions screening feature.
+---
+
+Last updated: **10 September 2026**. This notice covers the sanctions screening feature; it is not a substitute for a complete, jurisdiction-specific privacy policy.
+
+## Data recorded
+
+As of 16 September 2026, wallet screening is disabled across swaps, funding, and claims. These actions no longer generate screening events. Historical screening records remain retained; the following describes those historical records, not a currently active screening service. Automatic source downloads and the admin screening panel are disabled.
+
+Walletor records a public wallet address, the attempted action, an action reference, the screening outcome, the screening policy version, an OFAC source fingerprint, and a timestamp. An action reference can identify a swap request, claim entitlement, or reward round. Records may therefore be linked to public blockchain activity and Walletor's existing accounting records.
+
+The screening event itself does not record an IP address, name, passport, or seed phrase. Existing hosting, access-security, and application logs are separate systems and can contain request metadata. Public wallet addresses should not be treated as anonymous when they can be linked to a person.
+
+## Purpose and access
+
+These records support access restrictions, evidence preservation, troubleshooting, and review of potentially incorrect decisions. Access to the administrator screening log is protected by Walletor's administrative access controls. The public status endpoint provides source-health information, not individual wallet screening histories.
+
+The current implementation downloads an official list and performs comparisons within Walletor's backend. It does not send each screened wallet to OFAC or a commercial blockchain-analytics provider. Cloudflare hosts the backend and database. A future analytics or identity provider will require an updated notice and appropriate contractual and access controls before use.
+
+## Retention and requests
+
+Screening records currently have no automatic deletion schedule and are protected from routine edits and deletion. This is an implementation fact, not a claim that indefinite retention is legally appropriate. A documented retention schedule, legal-hold procedure, controller identity, lawful basis, international-transfer assessment where relevant, and rights-request contact must be completed for the intended launch jurisdictions. Deletion or correction requests require review; applicable preservation obligations may limit what can be removed.
+
+Do not upload identity documents through public support channels. Walletor's current screening feature does not contain a document-upload or KYC-verification service. See [Screening restrictions and review](/legal/screening-review/) to request the appropriate channel.
+
+## Reporting
+
+A screening result does not automatically trigger a law-enforcement report. Any disclosure or legally required reporting needs an authorized process under the applicable rules. Walletor cannot promise that records will never be disclosed when lawfully required.

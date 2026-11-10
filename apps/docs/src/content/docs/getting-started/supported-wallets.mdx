@@ -1,0 +1,37 @@
+---
+title: Supported wallets
+description: Wallets currently supported by Walletor on Solana.
+---
+
+Walletor discovers installed Solana wallets through the Wallet Standard and keeps explicit connection or installation options available for the wallets listed below. MetaMask Solana registers through MetaMask's official Solana connector.
+
+## Supported options
+
+| Wallet          | Connection method         | Notes                                                  |
+| --------------- | ------------------------- | ------------------------------------------------------ |
+| Phantom         | Wallet Standard           | Browser extension and supported mobile handoff         |
+| Backpack        | Wallet Standard           | Browser extension and supported mobile handoff         |
+| Trust Wallet    | Wallet Standard           | Availability depends on platform and installed version |
+| MetaMask Solana | MetaMask Solana connector | Requires a MetaMask version with Solana support        |
+
+Wallet availability depends on the browser, device, extension installation, and wallet version. A **Detected** label means the wallet is installed and available in the current browser. Selecting an unavailable wallet opens its official installation flow where the wallet adapter supports one.
+
+## Connection is not transaction approval
+
+Connecting shares a public wallet address with the site. Every swap still requires a separate wallet signature. Walletor does not request or store seed phrases or private keys.
+
+## Mobile wallets
+
+Walletor registers Solana Mobile Wallet Standard so compatible Android wallets can receive the connection handoff. On other mobile devices, open Walletor inside the wallet's in-app browser when available. Return to Walletor after signing and wait for the confirmed execution receipt.
+
+## If your wallet does not appear
+
+1. Confirm the wallet supports Solana mainnet.
+2. Update the wallet application or extension.
+3. Unlock the wallet before opening the connection list.
+4. Refresh Walletor and try again.
+5. Disable conflicting wallet extensions temporarily if several inject the same provider.
+
+:::danger
+Walletor support will never ask for your seed phrase, private key, or remote-control access to your device.
+:::

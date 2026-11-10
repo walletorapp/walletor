@@ -1,0 +1,324 @@
+.concept-token-detail-page .concept-main {
+  width: 100%;
+  max-width: none;
+}
+
+.token-terminal {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  color: #e7eefb;
+}
+
+.token-terminal-topline,
+.token-terminal-heading,
+.token-terminal-heading-actions,
+.token-terminal-identity,
+.token-terminal-chart > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.token-terminal a {
+  color: #71dcb2;
+}
+
+.token-terminal a:focus-visible,
+.token-terminal button:focus-visible {
+  outline: 2px solid #52dba0;
+  outline-offset: 3px;
+}
+
+.token-trade-jump,
+.token-terminal-chart > header > a,
+.token-terminal-address a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.token-terminal-heading {
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.18);
+}
+
+.token-terminal-identity {
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.token-terminal-identity > div {
+  min-width: 0;
+}
+
+.token-terminal-identity h1 {
+  margin: 3px 0;
+  overflow-wrap: anywhere;
+  font-size: 24px;
+}
+
+.token-terminal-identity .eyebrow {
+  margin: 0;
+  color: #91a4bc;
+  font-size: 10px;
+}
+
+.token-terminal-identity span {
+  color: #91a4bc;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.token-terminal .address-button,
+.token-terminal .icon-button {
+  border-color: rgba(96, 165, 250, 0.2);
+  color: #bacbe0;
+  background: rgba(7, 13, 25, 0.78);
+}
+
+.token-terminal-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(345px, 400px);
+  align-items: start;
+  gap: 16px;
+}
+
+.token-terminal-market,
+.token-terminal-side {
+  display: grid;
+  min-width: 0;
+  gap: 14px;
+}
+
+.token-terminal-panel,
+.token-terminal-chart {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 14px;
+  background: var(--c2-swap-surface, #07101d);
+}
+
+.token-terminal-panel {
+  padding: 17px;
+}
+
+.token-terminal h2 {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.token-terminal h2 > span {
+  margin-left: 5px;
+  color: #91a4bc;
+  font-size: 11px;
+}
+
+.token-terminal-panel > p,
+.token-terminal-chart > p {
+  margin: 14px 0 0;
+  color: #91a4bc;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.token-terminal-chart > header {
+  flex-wrap: wrap;
+  min-height: 50px;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.18);
+}
+
+.token-chart-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.token-chart-controls button {
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  padding: 8px 10px;
+  color: #91a4bc;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.token-chart-controls button[aria-pressed="true"] {
+  border-color: rgba(52, 211, 153, 0.28);
+  color: #75e0b3;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.token-terminal-chart iframe {
+  display: block;
+  width: 100%;
+  height: 650px;
+  border: 0;
+  background: #07101d;
+}
+
+.token-chart-empty {
+  display: flex;
+  min-height: 650px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.token-chart-empty strong {
+  font-size: 16px;
+}
+
+.token-chart-empty span {
+  max-width: 340px;
+  color: #91a4bc;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.token-terminal-chart > p {
+  margin: 0;
+  border-top: 1px solid rgba(96, 165, 250, 0.12);
+  padding: 10px 13px;
+}
+
+.token-activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 14px;
+}
+
+.token-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 12px;
+}
+
+.token-metric {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.token-metric > span {
+  color: #91a4bc;
+  font-size: 11px;
+}
+
+.token-metric > strong {
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.token-price-changes {
+  display: flex;
+  gap: 24px;
+  margin-top: 18px;
+  border-top: 1px solid rgba(96, 165, 250, 0.12);
+  padding-top: 14px;
+  color: #91a4bc;
+  font-size: 11px;
+}
+
+.token-price-changes > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.token-control-rows {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.token-control-rows strong {
+  font-size: 13px;
+}
+
+.token-terminal-trade {
+  min-width: 0;
+  scroll-margin-top: 20px;
+}
+
+.token-terminal-trade > h2 {
+  margin: 2px 0 12px;
+}
+
+.token-terminal-address code {
+  display: block;
+  margin-bottom: 14px;
+  color: #91a4bc;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+@media (max-width: 1100px) {
+  .token-terminal-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .token-terminal-side {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    align-items: start;
+  }
+
+  .token-terminal-address {
+    grid-column: 1;
+  }
+
+  .token-terminal-trade {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+@media (max-width: 700px) {
+  .concept-token-detail-page .concept-main {
+    padding: 16px 12px 28px;
+  }
+
+  .token-terminal-side {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .token-terminal-side > * {
+    width: 100%;
+  }
+
+  .token-terminal-trade {
+    order: -1;
+  }
+
+  .token-terminal-chart iframe {
+    height: 520px;
+  }
+
+  .token-chart-empty {
+    min-height: 520px;
+  }
+
+  .token-activity-grid,
+  .token-control-rows {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .token-chart-controls button,
+  .token-terminal .address-button,
+  .token-terminal .icon-button {
+    min-height: 40px;
+  }
+}

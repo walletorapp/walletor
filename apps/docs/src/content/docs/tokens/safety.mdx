@@ -1,0 +1,34 @@
+---
+title: Token safety
+description: Verify Solana tokens and understand Walletor safety labels before swapping.
+---
+
+Token discovery is not an endorsement. Anyone can create a Solana token, copy a name, reuse an image, or publish misleading metadata.
+
+## Verify the mint
+
+The mint address is the primary token identifier. Compare it with the project's official channels and inspect it independently on Solscan before trading.
+
+## Understand labels
+
+**Verified** means the token matches the verification data supplied by Walletor's normalized metadata sources. It does not guarantee price stability, liquidity, legitimacy, or safety.
+
+**Unverified** means you must perform additional checks. It does not automatically mean the token is malicious.
+
+**No route** means Jupiter did not return an executable order for the selected pair and amount at that moment.
+
+## Check before signing
+
+- Mint address and token decimals
+- Token authorities and account extensions
+- Liquidity and route quality
+- Price impact and minimum received
+- Whether the wallet transaction contains unexpected instructions
+
+## Logos can be wrong
+
+A high-resolution logo is still untrusted metadata. Walletor treats all remote image URLs as untrusted and uses fallbacks when they fail.
+
+:::danger
+Never sign a transaction you do not understand. A wallet connection is reversible; a signed on-chain transaction may not be.
+:::

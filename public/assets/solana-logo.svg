@@ -1,0 +1,13 @@
+<svg width="101" height="88" viewBox="0 0 101 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100.48 69.3817 83.8068 86.8015A3.93 3.93 0 0 1 80.9743 88H1.93563a1.94 1.94 0 0 1-1.41521-3.1722L17.2061 67.408a3.93 3.93 0 0 1 2.824-1.1985h79.0343a1.94 1.94 0 0 1 1.4156 3.1722ZM83.8068 34.3032a3.93 3.93 0 0 0-2.8325-1.1984H1.93563A1.94 1.94 0 0 0 .520422 36.277L17.2061 53.6968a3.93 3.93 0 0 0 2.824 1.1984h79.0343a1.94 1.94 0 0 0 1.4156-3.1722L83.8068 34.3032ZM1.93563 21.7905H80.9743a3.93 3.93 0 0 0 2.8325-1.1985L100.48 3.17219A1.94 1.94 0 0 0 99.0644 0H20.0301a3.93 3.93 0 0 0-2.8234 1.19848L.524723 18.6183a1.94 1.94 0 0 0 1.410907 3.1722Z" fill="url(#solana-gradient)"/>
+  <defs>
+    <linearGradient id="solana-gradient" x1="8.52558" y1="90.0973" x2="88.9933" y2="-3.01622" gradientUnits="userSpaceOnUse">
+      <stop offset=".08" stop-color="#9945FF"/>
+      <stop offset=".3" stop-color="#8752F3"/>
+      <stop offset=".5" stop-color="#5497D5"/>
+      <stop offset=".6" stop-color="#43B4CA"/>
+      <stop offset=".72" stop-color="#28E0B9"/>
+      <stop offset=".97" stop-color="#19FB9B"/>
+    </linearGradient>
+  </defs>
+</svg>

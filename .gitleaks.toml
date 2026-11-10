@@ -1,0 +1,10 @@
+title = "Walletor public source credential checks"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "walletor-questline-live-api-key"
+description = "Questline live API credential"
+regex = '''qlk_live_[A-Za-z0-9_-]{20,}'''
+keywords = ["qlk_live_"]

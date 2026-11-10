@@ -1,0 +1,66 @@
+---
+title: Claiming winnings
+description: How Walletor's access-restricted mainnet-USDC claim flow works.
+---
+
+The Claim page shows a connected wallet's finalized allocations, active USDC entitlements, round state, and lifetime WLT Points.
+
+## Current status
+
+The mainnet claim service is enabled for Walletor's access-restricted launch. A wallet will show no withdrawable amount until a real round has closed and its official-USDC distribution has been reconciled, funded, staged, and activated.
+
+## Claim flow
+
+When a reviewed distribution is active:
+
+1. Connect the wallet that received the finalized allocation.
+2. Review the eligible amount, token, round, and network fee.
+3. Request a short-lived claim transaction constructed for that wallet and entitlement.
+4. Review and send the transaction in the connected wallet.
+5. Wait for confirmed Solana execution.
+6. Review the confirmation popup showing the claimed USDC and your lifetime WLT Points, then open the transaction on Solscan if desired.
+
+After confirmation, optional Twitter/X, WhatsApp, and Telegram buttons open a share composer. Sharing is not required to receive winnings and does not happen automatically. WLT Points shown in the popup are off-chain points, not tokens paid by the claim.
+
+On desktop, the primary claim action appears below the Prize Pool display. A submitted transaction can remain pending while verification catches up; submission alone is not confirmed payment. Check the transaction status before trying again. Follow the deadline shown for the specific entitlement—the 24-hour pool round is not the claim deadline.
+
+The transaction can create the wallet's USDC token account when necessary and
+then claim the exact committed amount. Walletor validates the returned
+signature and on-chain claim account before marking the claim confirmed.
+
+## Fees when claiming
+
+Walletor withholds **2.50% (250 basis points)** from each gross allocation before funding the Rewards Program distribution:
+
+```text
+claim fee = floor(gross USDC atomic units × 250 / 10,000)
+net claim = gross allocation − claim fee
+```
+
+The Claim page displays the net USDC amount. The claimant separately pays the Solana network and any token-account creation cost shown by the wallet. The claim instruction does not send an additional fee from the winner.
+
+The connected claiming wallet is the transaction's fee payer and only required
+signer. Keep enough SOL in that wallet for the network fee and, if needed, creation
+of its USDC token account. Review the costs in the wallet before approving.
+
+These user-paid costs do not fund deployment of Walletor's randomness program,
+oracle requests, or the operator's distribution-funding transactions. Those occur
+before a prize becomes claimable and need separate SOL funding.
+
+## Availability
+
+Runtime wallet screening is disabled. Claim preparation still verifies the funded distribution, entitlement, wallet, and claim deadline. An unavailable RPC or an inactive entitlement can prevent the website from preparing a claim; it does not freeze the wallet.
+
+## Why a claim may not appear
+
+An enabled claim page is not an entitlement. Withdrawals require an eligible winning wallet, exact official-USDC reconciliation, verified Rewards Program and round-specific randomness evidence, authority-wallet approval, a funded and activated on-chain distribution, and a confirmed claim window.
+
+## WLT Points are separate
+
+The referral section before the footer shows your connected wallet's permanent invite link, qualified referrals, referral WLT Points, and current lucky-draw weight boost. Open the [Referral page](https://walletor.com/referal) for registration and sharing. A qualified referral awards 100 WLT Points to the referrer; it does not add USDC to a claim. See [Referral rewards](/rewards/referrals/) for the full rules.
+
+WLT Points are not withdrawable winnings. They are off-chain rewards for a future allocation and do not currently represent a transferable asset.
+
+:::danger
+Walletor will never ask for your seed phrase or private key. Ignore any direct message or transaction claiming winnings are available when the official Claim page does not show a verified entitlement for your connected wallet.
+:::

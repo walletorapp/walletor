@@ -1,0 +1,37 @@
+---
+title: Discovery & roteamento
+description: Como Walletor encontra novos tokens Solana e decide se eles podem ser trocados.
+---
+
+Walletor mantém a descoberta do token e a autoridade de swap separada. Encontrar um token não significa que exista uma rota.
+
+## Descoberta recente
+
+Walletor usa um webhook Helius confirmado assistindo o programa oficial Pump.fun para adicionar novos lançamentos ao seu índice de busca D1. Isso evita depender de uma pequena janela de votação que pode perder lançamentos durante períodos de alto volume.
+
+O evento de entrada é validado antes do armazenamento, incluindo os endereços Solana, assinatura de transação, discriminador de instruções, campos de instrução e metadados URI.
+
+## Enriquecimento dos metadados
+
+Jupiter Tokens V2 fornece informações indexadas, como nome, símbolo, URL da imagem, estado de verificação, atividade, preço e liquidez quando disponível. Walletor pode pesquisar Jupiter diretamente por hortelã quando um usuário cola um endereço.
+
+Metadados e roteamento são gasodutos separados. Um mercado pode se tornar routable antes de metadados completos estão disponíveis.
+
+## Fonte da verdade da tradabilidade
+
+Jupiter `/swap/v2/order` é a fonte da verdade para saber se o par escolhido e a quantidade são negociáveis agora. Walletor permite a ação de swap apenas após Jupiter retorna uma ordem executável.
+
+## Ciclo de vida Pump.fun
+
+- Os tokens de ligação-curva pré-migração podem ser encaminhados através de Jupiter quando existe uma ordem.
+- Os pools graduados são captados automaticamente após a migração.
+- Um token que não se graduar pode sair do roteamento após o período de graça baseado na idade Jupiter.
+- Um token que permaneça visível na pesquisa não garante uma rota ativa.
+
+## Retrocessos de imagem
+
+Editores Token controlam grande parte de seus metadados. Walletor tenta Jupiter metadados primeiro e pode usar o enriquecimento Helius para procurar exatamente menta. Se uma imagem remota estiver faltando, deformada, bloqueada ou indisponível, a interface mostra uma falha de texto estável em vez de quebrar a identidade do token.
+
+:::note[Aviso de tradução]
+Esta tradução é fornecida por conveniência. Em caso de diferença em relação à versão em inglês, a versão em inglês é a fonte oficial.
+:::

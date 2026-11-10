@@ -1,0 +1,65 @@
+---
+title: Estado actual del producto
+description: What is active, what is beta, and what is not yet available in Walletor.
+---
+
+:::note
+Actualización del 14 de septiembre de 2026: esta página muestra la versión actual en inglés mientras se actualiza la traducción.
+:::
+
+<div lang="en" dir="ltr">
+
+Last reviewed: **22 September 2026**. Walletor remains in access-restricted mainnet testing; deployment is not approval for unrestricted public launch.
+
+## Active
+
+- Solana wallet connection through supported Wallet Standard wallets
+- Jupiter Swap V2 order and execution flow
+- Token search by name, symbol, and Solana mint
+- Wallet-specific quotes and wallet-signed swaps
+- A server-enforced rolling 24-hour swap-volume limit
+- Confirmed fee accounting in exact token units
+- Two WLT Points for each newly verified eligible fee-bearing Walletor swap valued at $5.00 or more
+- Daily Prize Pool rounds, closing every 24 hours from the one-time early close
+- Solscan links for verified transaction evidence
+- MagicBlock randomness on mainnet for the 22 September early-close round and subsequent rolling 24-hour rounds; a finalized callback and successful USDC claim are verified
+- Manual USDC distribution funding and winner-signed claims on mainnet
+
+## Beta
+
+- Prize Pool valuation is a USD estimate derived from confirmed fees
+- New-token discovery uses a Helius Pump.fun webhook with Jupiter metadata enrichment
+- Token images depend on publisher metadata and may fall back to an initial if the remote asset is broken
+- Reward weights and allocations are calculated by the published deterministic backend formula
+- The mainnet-USDC claim flow uses verified round-specific randomness evidence and one shared Rewards Program Merkle distribution per round
+- Walletor withholds a fixed 250 bps (2.50%) claim fee before the net USDC distribution is funded
+
+## Not live
+
+- Runtime wallet screening: disabled; AML documentation remains available
+
+- Stocks/RWA trading; the page is a Coming Soon preview while issuer eligibility and jurisdiction controls are completed
+- Fully automatic randomness and treasury funding; the operator currently signs these transactions
+- USDC withdrawals without an active, funded entitlement
+- Transferable WLT tokens
+- Guaranteed rewards, returns, or token values
+- Hidden AI or manual winner selection
+- Comprehensive sanctions coverage, ownership analysis, and transaction-risk monitoring
+- KYC/KYB and a completed jurisdiction-specific eligibility policy; existing geographic restrictions still apply
+
+## Remaining public-launch work
+
+- Verify that the deployed shared claim program matches reviewed source. Its public verifier still reports unverified; successful claims and deployment-pin checks do not replace this evidence.
+- Complete the operating-entity, supported-market, prize-model, privacy, and applicable compliance decisions, and establish staffed review and support procedures.
+
+Runtime screening is disabled in swaps and administration. The [AML documentation](/legal/aml-sanctions/) is not a claim of active screening or completed compliance coverage.
+
+:::caution[Controlled mainnet launch]
+The claim API and page are enabled on mainnet for Walletor's access-restricted launch. This does not create a claim by itself: a real round must close, be reconciled in official USDC, be funded by the configured authority, and be activated before a winning wallet can claim. Walletor does not control or upgrade the shared Solana Foundation Rewards Program.
+:::
+
+## Source of truth
+
+The browser interface is not an accounting authority. Server ledger records and confirmed Solana/Jupiter execution evidence determine whether a swap, fee, point credit, allocation, or payout exists.
+
+</div>

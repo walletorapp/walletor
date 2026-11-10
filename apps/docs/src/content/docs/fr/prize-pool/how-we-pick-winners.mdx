@@ -1,0 +1,121 @@
+---
+title: Comment choisir les gagnants
+description: The public and reproducible process designed to select Walletor's 24-hour Prize Pool winners.
+---
+
+:::note
+Mise à jour du 15 septembre 2026 : cette page affiche la version actuelle en anglais en attendant la mise à jour de la traduction.
+:::
+
+<div lang="en" dir="ltr">
+
+:::note[MagicBlock migration]
+The MagicBlock adapter is deployed on Solana mainnet. The 22 September early-close round and subsequent rolling 24-hour rounds use MagicBlock. After the early close, each new round ends 24 hours after the previous one. A finalized MagicBlock callback and a successful USDC winner claim were verified on 22 September 2026. Historical rounds retain their original evidence and are not rerolled.
+:::
+
+Walletor's production Prize Draw is designed to reward **two verified fee-contribution leaders plus up to 20 additional unique lucky winners every 24 hours**. No Walletor team member, administrator, ChatGPT, Codex, or hidden AI chooses them.
+
+The eligible wallets and rules are locked first. MagicBlock then supplies verifiable randomness, and Walletor's published deterministic algorithm converts it into the winning wallets.
+
+:::caution[Under development]
+The mainnet-USDC claim architecture is enabled for Walletor's access-restricted launch. A claim is available only after exact USDC reconciliation, private-RPC verification, authority review, funding, staging, and activation of the reviewed distribution.
+:::
+
+## 1. Qualifying for a 24-hour draw
+
+A Walletor Prize Pool round runs for 24 hours from the previous round’s close. The live countdown shows its deadline. A wallet qualifies only when it completes at least one eligible swap during that window. Historical rounds retain their original windows.
+
+An eligible swap must:
+
+- be routed through Walletor using Jupiter Swap V2;
+- be signed by the trader's connected wallet;
+- finalize successfully on Solana;
+- contain the configured Walletor referral fee; and
+- have a quote-time USD valuation of at least $5.00; and
+- have a transaction signature that has not already been counted.
+
+Each wallet appears once in the participant snapshot. Only eligible swaps add to its verified volume and fee-contribution totals.
+
+## 2. Ranking leaders and applying lucky-draw weights
+
+First and second place are ranked by verified Walletor fee contribution. Ties are resolved by eligible trading volume, then eligible swap count, then wallet address. Those two wallets are removed from the lucky draw.
+
+For every remaining wallet:
+
+```text
+raw lucky weight = verified Walletor fee contribution in micro-USD
+lucky weight cap = 5 × the lower median positive contribution
+final lucky weight = min(max(raw lucky weight, 1), lucky weight cap)
+```
+
+The cap encourages trading while limiting domination by a single wallet. The winner count, fee contribution, volume, and weights are copied into the round record at closing. A later settings change can affect only future rounds.
+
+## 3. Locking the participants before randomness
+
+### Referral boosts for future V4 rounds
+
+The Referral page displays the stored V4 activation boundary. Rounds starting on or after that boundary add 10% lucky-draw weight per qualified referral in that round, capped at 50%, after the existing median cap. The referrer must independently qualify. The top two leaders are unchanged, and previous rounds retain their original algorithm. The boost and final weight are committed in the locked snapshot. See [Referral rewards](/rewards/referrals/).
+
+At the round close, Walletor:
+
+1. stops accepting eligibility events for that round;
+2. deduplicates qualifying activity to one record per wallet;
+3. sorts the wallets by address;
+4. creates a canonical participant snapshot with exact integer fee, volume, and weight fields; and
+5. publishes the snapshot checksum and Merkle root.
+
+The participant list, pool amount, winner count, fee, and weighting rules are frozen before randomness is requested. This prevents anyone from adding, removing, or reordering wallets after seeing the random result.
+
+## 4. Selecting the 20 lucky winners
+
+The two leaders occupy ranks 1 and 2. MagicBlock provides a verifiable 32-byte random value for ranks 3 through 22. For each lucky rank, Walletor hashes that value together with the algorithm version, round ID, rank, and attempt counter.
+
+MagicBlock uses a request and authenticated callback flow. Walletor binds each request to its locked snapshot and verifies finalized evidence before using the result. Duplicate requests and replayed callbacks are rejected. See the [official integration guide](https://docs.magicblock.gg/pages/verifiable-randomness-functions-vrfs/how-to-guide/quickstart).
+
+```text
+round_id_hash = SHA-256(public_round_id)
+x = first_128_bits(SHA-256("WALLETOR_DRAW_V3" || randomness || round_id_hash || rank_u16_be || counter_u32_be))
+limit = (2^128 − 1) − ((2^128 − 1) mod total_weight)
+repeat with counter + 1 while x >= limit
+winning_ticket = x mod total_weight
+```
+
+V4 uses the same ticket calculation with the domain `WALLETOR_DRAW_V4`. Its participant leaf domain is `WALLETOR_PARTICIPANT_V4`, with the referral boost appended as an unsigned two-byte big-endian integer; its checksum domain is `WALLETOR_SNAPSHOT_V4`. V3 domains and historical proofs are unchanged.
+
+The wallet whose committed weight interval contains the ticket wins that rank. If it already won during the round, the counter advances and another ticket is derived. Rejection sampling prevents modulo bias, and every attempt is included in the public proof.
+
+- The target is 22 different wallets: two leaders and 20 lucky winners.
+- A wallet can win only once per round.
+- The leaders receive 20% and 10% of the gross pool.
+- The lucky winners share the remaining 70% equally using exact integer USDC units.
+- If fewer wallets qualify, every eligible non-leader wallet fills an available lucky place. One-wallet and two-wallet rounds use the published 100% and two-thirds/one-third fallback.
+- Any indivisible atomic-unit remainder is assigned in winner-rank order.
+
+## 5. Verifying the result
+
+Walletor will publish enough evidence for anyone to repeat the calculation:
+
+- the participant snapshot, checksum, and Merkle root;
+- the exact winner count, verified contribution and volume totals, weights, algorithm version, and total weight;
+- the MagicBlock draw account, snapshot commitment, and request/callback transactions;
+- every winning ticket, attempt counter, and participant proof; and
+- the final Solana settlement and claim transactions.
+
+The same inputs always produce the same winners. Walletor publishes the locked inputs and calculation evidence. The shared Rewards Program verifies each winner's Merkle proof and can pay only an address committed into the funded root; it does not independently repeat Walletor's winner-selection calculation.
+
+## 6. Claiming a win
+
+After a reviewed distribution is funded and activated, each entitlement is claimable from the same Solana wallet that qualified. Every round uses a separate program-derived USDC vault. The user signs and sends the claim in their wallet; Walletor never holds the user's key or winnings.
+
+Walletor's claim fee is **2.50% (250 basis points)**, withheld from gross winnings using exact integer USDC atomic units before the distribution is funded:
+
+```text
+claim fee = floor(gross winnings × 250 / 10,000)
+net winnings = gross winnings − claim fee
+```
+
+The Claim page shows the net USDC amount. The winner separately pays the Solana network and any token-account creation cost shown by the wallet.
+
+For the shorter rules summary, see [Prize Pool rules](/prize-pool/how-it-works/). For the evidence published with each round, see the [Transparency ledger](/prize-pool/transparency/).
+
+</div>

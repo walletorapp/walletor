@@ -1,0 +1,37 @@
+---
+title: Pengalihan & routing
+description: Bagaimana Walletor menemukan yang baru Solana token dan memutuskan apakah mereka dapat ditukar.
+---
+
+Walletor terus penemuan token dan otoritas swap terpisah. Menemukan token tidak berarti rute ada.
+
+## Penemuan baru-token
+
+Walletor menggunakan dikonfirmasi Helius webhook menonton resmi Pump.fun program untuk menambahkan peluncuran baru ke indeks pencarian D1 nya. Ini menghindari mengandalkan pada jendela polling kecil yang dapat kehilangan peluncuran selama periode tinggi-volume.
+
+Acara yang masuk divalidasi sebelum penyimpanan, termasuk alamat Solana, signature transaksi, instruksi diskriminator, daerah instruksi, dan metadata URI.
+
+## Perkaya metadata
+
+Jupiter Tokens V2 menyediakan informasi terindeks seperti nama, simbol, URL gambar, kondisi verifikasi, aktivitas, harga, dan likuiditas ketika tersedia. Walletor dapat mencari Jupiter langsung oleh mint ketika pengguna pastes alamat.
+
+Metadata dan routing adalah jaringan pipa yang terpisah. Pasar bisa menjadi rutin sebelum metadata lengkap tersedia.
+
+## Sumber kebenaran tradabilitas
+
+Jupiter `/swap/v2/order` adalah sumber kebenaran untuk apakah pasangan terpilih dan jumlah yang dapat ditelusuri sekarang. Walletor mengaktifkan aksi swap hanya setelah Jupiter mengembalikan perintah eksekusi.
+
+## Garis hidup Pump.fun
+
+- token pra-migrasi-kurva dapat dialihkan melalui Jupiter ketika ada perintah.
+- Kolam kelulusan diambil secara otomatis setelah migrasi.
+- Sebuah tanda yang tidak lulus dapat drop out dari routing setelah usia Jupiter berbasis periode rahmat.
+- Sebuah tanda yang masih terlihat dalam pencarian tidak menjamin rute aktif.
+
+## Gambar fallback
+
+Penerbit Token mengontrol banyak metadata mereka. Walletor mencoba Jupiter metadata pertama dan dapat menggunakan Helius pengayaan untuk pencarian mint tepat. Bila suatu gambar jauh hilang, salah bentuk, diblokir, atau tidak tersedia, antarmuka menampilkan suatu teks yang stabil jatuh ke belakang, bukan memecah identitas token.
+
+:::note[Pemberitahuan terjemahan]
+Terjemahan ini disediakan untuk kemudahan. Jika terdapat perbedaan dengan versi bahasa Inggris, versi bahasa Inggris merupakan sumber resmi.
+:::

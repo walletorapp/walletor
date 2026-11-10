@@ -1,0 +1,52 @@
+---
+title: WLT Points
+description: How Walletor credits WLT Points and what they represent during beta.
+---
+
+:::note
+Përditësim më 15 shtator 2026: kjo faqe paraqet versionin aktual në anglisht derisa të përditësohet përkthimi.
+:::
+
+<div lang="en" dir="ltr">
+
+WLT Points are Walletor's off-chain activity rewards for a possible future allocation. They are not currently a transferable token and do not have a guaranteed monetary value.
+
+## Earning points
+
+Each newly verified, fee-bearing Walletor swap valued at **$5.00 or more** earns **two WLT Points**. Smaller swaps may execute, but do not earn WLT Points or Prize Pool eligibility.
+
+A qualifying credit requires all of the following:
+
+- The swap was requested through Walletor's Jupiter integration.
+- Jupiter returned the configured Walletor referral account and fee proof.
+- The connected wallet signed the transaction.
+- Jupiter returned a successful execution result and transaction signature.
+- The confirmed fee is greater than zero.
+- Walletor's quote-time USD valuation for the swap is at least $5.00.
+- The signature has not already been credited.
+
+Qualified referrals also award **100 WLT Points to the referrer**, once per new referred wallet after its first eligible swap. This is separate from ordinary swap points. See [Referral rewards](/rewards/referrals/) for registration and daily lucky-draw boosts.
+
+## What does not earn points
+
+- Opening or connecting a wallet
+- Requesting a quote
+- Clicking the Swap button without successful execution
+- A failed, rejected, or expired transaction
+- A route without the required Walletor fee proof
+- A confirmed swap valued below $5.00
+- Retrying an already credited transaction signature
+
+## Lifetime and daily values
+
+The Rewards page displays current-round confirmed swaps and lifetime WLT Points from the server ledger. Browser storage is never used as the authoritative points balance.
+
+## Reward tiers
+
+Activity tiers describe progress through confirmed swaps. They do not change the fixed two-point credit per eligible swap. The current Prize Draw ranks two leaders by verified fee contribution and caps other wallets' contribution-based lucky weights at five times the lower median positive contribution. The older tier-multiplier formula is not the current winner-selection rule. See [How we pick the winners](/prize-pool/how-we-pick-winners/).
+
+:::note[No WLT token claim today]
+WLT Points are an accounting unit for a future allocation. Walletor has not launched a transferable WLT token, conversion schedule, redemption right, or guaranteed value.
+:::
+
+</div>

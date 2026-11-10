@@ -1,0 +1,48 @@
+---
+title: स्वैप कैसे करें
+description: The complete Walletor swap flow from quote to confirmed execution.
+---
+
+:::note
+14 सितंबर 2026 का अपडेट: अनुवाद अपडेट होने तक यह पेज नवीनतम अंग्रेज़ी संस्करण दिखाता है।
+:::
+
+<div lang="en" dir="ltr">
+
+## The execution flow
+
+1. **Select a pair.** Choose input and output tokens or paste a mint address.
+2. **Enter an amount.** Walletor converts the display amount into exact atomic units.
+3. **Request an order.** The Worker validates both mints, the wallet address, and the amount before requesting Jupiter Swap V2.
+4. **Check tradability.** A token is tradable only when Jupiter `/swap/v2/order` returns an executable route.
+5. **Review live details.** Walletor shows expected output, minimum received, price impact, route, fee rate, network-cost context, and quote age.
+6. **Sign in your wallet.** Walletor submits the Jupiter transaction to the connected wallet. Your signature is required.
+7. **Execute with Jupiter.** The signed transaction is submitted through Jupiter `/execute`.
+8. **Confirm success.** Walletor accepts only a Jupiter `Success` result with a transaction signature.
+
+## Quote freshness
+
+Market conditions can change quickly. Walletor refreshes a live quote automatically a limited number of times and then asks you to refresh manually. The wallet transaction is the final source of approval.
+
+## When no route is available
+
+A searchable token is not automatically tradable. If Jupiter returns no route, Walletor disables swapping for that pair rather than constructing a transaction that is likely to fail.
+
+Common reasons include:
+
+- The market has not launched or has insufficient liquidity.
+- A Pump.fun token has not graduated and is outside the routing grace period.
+- The selected direction or amount is not currently routable.
+- Jupiter requires a referral fee account for the chosen fee mint and that account is not initialized.
+
+## Confirmation and history
+
+The success view includes the Solana transaction signature and a Solscan link. Device-local history is a convenience view only; Walletor's backend ledger is the authoritative source for rewards and Prize Pool accounting.
+
+Rewards syncing shows a five-second countdown while Walletor checks confirmation evidence. This is not a guaranteed credit time. If verification takes longer, Walletor continues retrying and shows a delayed state; the timer cannot create fees, Prize Pool entries, or WLT Points.
+
+## Wallet screening
+
+Walletor checks the transaction wallet before preparing an executable order and checks its required signers before submission. A listed wallet or unavailable screening source can stop the action. See [AML and sanctions controls](/legal/aml-sanctions/) for the limited screening scope and review process.
+
+</div>

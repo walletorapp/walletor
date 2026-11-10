@@ -1,0 +1,37 @@
+---
+title: Descubrimiento y enrutamiento
+description: Cómo Walletor encuentra nuevos tokens Solana y decide si pueden ser intercambiados.
+---
+
+Walletor mantiene el descubrimiento de tokens y la autoridad de intercambio separados.
+
+## Descubrimiento de nuevos tokens
+
+Walletor utiliza un conector web confirmado Helius que observa el programa oficial Pump.fun para agregar nuevos lanzamientos a su índice de búsqueda D1. Esto evita confiar en una pequeña ventana de votación que puede perder lanzamientos durante períodos de alto volumen.
+
+El evento entrante se valida antes de almacenarse, incluidas las direcciones Solana, la firma de la transacción, el discriminador de instrucciones, los campos de instrucciones y la URI de metadatos.
+
+## Enriquecimiento de metadatos
+
+Jupiter Tokens V2 proporciona información indexada como nombre, símbolo, URL de imagen, estado de verificación, actividad, precio y liquidez cuando esté disponible. Walletor puede buscar Jupiter directamente por moneda cuando un usuario pegar una dirección.
+
+Los metadatos y el enrutamiento son canales separados. Un mercado puede volverse enrutable antes de que los metadatos completos estén disponibles.
+
+## Fuente de verdad de comerciabilidad
+
+Jupiter `/swap/v2/order` es la fuente de la verdad para saber si el par y la cantidad elegidos son negociables ahora. Walletor permite la acción de swap sólo después de Jupiter devuelve un orden ejecutable.
+
+## Ciclo de vida Pump.fun
+
+- Los tokens de curva de enlace pre-migración se pueden enrutar a través de Jupiter cuando existe un pedido.
+- Las piscinas de graduación se recogen automáticamente después de la migración.
+- Un token que no se gradúe puede dejar de enrutarse después del período de gracia basado en la edad de Jupiter.
+- Un token que permanezca visible en la búsqueda no garantiza una ruta activa.
+
+## Retrocesiones de imagen
+
+Los editores de tokens controlan gran parte de sus metadatos. Walletor intenta Jupiter metadatos primero y puede usar el enriquecimiento Helius para buscar la moneda exacta. Si una imagen remota falta, está malformada, bloqueada o no está disponible, la interfaz muestra un texto estable fallback en lugar de romper la identidad de los tokens.
+
+:::note[Aviso de traducción]
+Esta traducción se ofrece para facilitar la lectura. Si existe alguna diferencia con la versión en inglés, la versión en inglés es la fuente oficial.
+:::

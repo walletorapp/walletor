@@ -1,0 +1,48 @@
+---
+title: Fees & quotes
+description: Understand Walletor's current fee, Jupiter's share, and quote changes.
+---
+
+**100% of Walletor's confirmed swap-fee earnings is allocated back to active users and influencers through prizes and influencer rewards. Influencer rewards are held in reserve for manual payment; allocations are not completed payouts.**
+
+## Current referral fee
+
+Walletor currently requests a **50 basis point (0.50%) total referral fee** on supported Jupiter Swap V2 orders.
+
+| Portion              | Basis points | Percentage |
+| -------------------- | -----------: | ---------: |
+| Walletor gross share |       40 bps |      0.40% |
+| Jupiter share        |       10 bps |      0.10% |
+| Total referral fee   |       50 bps |      0.50% |
+
+Jupiter receives 20% of the configured integrator fee. From the October 12, 2026 reserve activation, Walletor allocates 89% of its confirmed 80% partner share to the Prize Pool and holds 11% in its own reserve. This applies to all new confirmed swaps, regardless of referrals. The reserve is intended for manual influencer payments, not automatic payouts. Previously credited fees and seed funding are unchanged. Token amounts are calculated exactly; rounding dust stays in the pool.
+
+## Example on a $100 fee basis
+
+- Total referral fee: **$0.50**
+- Walletor gross share: **$0.40**
+- Prize Pool: **$0.356**
+- Walletor reserve: **$0.044**
+- Jupiter share: **$0.10**
+
+This is an explanatory example, not a guaranteed quote. The actual fee asset and atomic amounts come from the executable order and confirmed execution.
+
+## Other values shown in a quote
+
+**Minimum received** is the protected lower output bound shown before signing.
+
+**Price impact** estimates how the swap changes the execution price relative to available liquidity.
+
+**Network and execution costs** are separate from the referral fee. Jupiter may optimize priority fees, gasless execution, and slippage protection for current network conditions.
+
+## How Walletor proves the fee is active
+
+Walletor rejects an order unless Jupiter returns the configured referral account, the configured platform fee rate, and matching valid fee-mint information. A route without this proof is not presented as a fee-bearing Walletor swap.
+
+## Fee mint behavior
+
+Jupiter selects a fee mint by priority. For common SOL-to-token flows, the fee is generally collected in wrapped SOL rather than the new token. Initialized referral token accounts for wrapped SOL, USDC, and USDT cover most Walletor routes.
+
+:::note
+The final executed amounts can differ from the quote. Walletor records exact confirmed token units and uses USD values only as estimates for display and reward accounting.
+:::

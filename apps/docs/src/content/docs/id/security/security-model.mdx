@@ -1,0 +1,56 @@
+---
+title: Model keamanan
+description: Walletor trust boundaries, wallet safety, and server-side financial controls.
+---
+
+:::note
+Pembaruan 14 September 2026: halaman ini menampilkan versi bahasa Inggris terbaru sementara terjemahan diperbarui.
+:::
+
+<div lang="en" dir="ltr">
+
+## Non-custodial swaps
+
+Walletor requests a Jupiter transaction, but the connected wallet must sign it. Walletor does not receive a seed phrase or private key and cannot move a trader's funds without a wallet signature.
+
+## Secret isolation
+
+Jupiter and Helius API keys live in Cloudflare Worker secret bindings. They are not exposed through Vite variables, client bundles, fixtures, browser logs, or public documentation.
+
+## Worker boundary
+
+The Worker validates external data before returning normalized contracts to the browser. This includes Solana mints, wallet addresses, atomic integer amounts, URL inputs, Jupiter responses, and token metadata.
+
+## Financial authority
+
+The browser cannot author a successful swap, fee, reward, pool balance, allocation, claim, or payout. Jupiter `Success` plus a transaction signature is required before accounting can credit a transaction.
+
+## Idempotency
+
+Each chain transaction signature and Jupiter request is credited once. Retrying a request or reloading a page cannot create another fee or WLT credit.
+
+## Shared claim program and release status
+
+Walletor uses an external Rewards Program for funded USDC claims. Funding preparation checks the finalized mainnet executable against its configured deployment pin. A matching pin detects an unexpected deployment change; it does not prove that the executable matches reviewed source. That source-to-binary verification remains unresolved, and automatic funding is disabled. See [current product status](/getting-started/product-status/).
+
+## Screening boundary
+
+Wallet screening is disabled across swaps, administrator distribution funding, and claims. The selected wallet's transaction signature, administrator authorization, claim-program verification, and on-chain transaction checks remain active. Automatic sanctions downloads and the admin screening panel are disabled. See [AML and sanctions controls](/legal/aml-sanctions/) for the current scope and retained historical records.
+
+## External content
+
+Token images, metadata, links, and third-party charts are untrusted. Walletor validates allowed addresses and URLs, limits framing and browser capabilities, and uses safe fallbacks for broken assets.
+
+## User responsibilities
+
+- Verify `walletor.com` before connecting.
+- Verify token mint addresses independently.
+- Review every wallet transaction before signing.
+- Keep seed phrases and private keys offline.
+- Treat messages promising guaranteed winnings or support recovery as scams.
+
+## Reporting a concern
+
+Do not include private keys, seed phrases, full secret values, or sensitive personal data in a report. Include the affected URL, public wallet address if relevant, transaction signature, time, and reproducible steps.
+
+</div>

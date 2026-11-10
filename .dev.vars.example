@@ -1,0 +1,19 @@
+# Copy to .dev.vars and provide the value locally. Never commit .dev.vars.
+JUPITER_API_KEY=
+# Server-only Solana RPC key used for reliable wallet and SPL-token balances.
+HELIUS_API_KEY=
+# Server-only optional Birdeye Standard-plan supplement for Trenches.
+BIRDEYE_API_KEY=
+# Long random bearer secret used only by the server-side Pump.fun event relay.
+TOKEN_INGEST_SECRET=
+# Separate long random bearer secret for the fee-mint operations process.
+REFERRAL_ADMIN_SECRET=
+# Optional integration secrets. These are deliberately empty in this snapshot.
+ZEALY_API_KEY=
+QUESTLINE_API_KEY=
+# Admin Access is closed until you configure your own Cloudflare application.
+CLOUDFLARE_ACCESS_TEAM_DOMAIN=
+CLOUDFLARE_ACCESS_AUD=
+ADMIN_ALLOWED_EMAILS=
+SOLANA_CLAIM_RPC_URL_PRIVATE=
+SOLANA_CLAIM_AUTOMATION_SECRET=

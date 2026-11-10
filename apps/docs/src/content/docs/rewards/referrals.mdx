@@ -1,0 +1,51 @@
+---
+title: Referral rewards
+description: Share your wallet-linked invite, earn WLT Points, and understand the capped lucky-draw boost.
+---
+
+## Get your link
+
+Connect your Solana wallet on the [Referral page](https://walletor.com/referal). Your permanent link is also shown at the bottom of Claims, before the footer. Copy it or open a Twitter/X, WhatsApp, or Telegram share composer. Sharing is optional and never posts automatically.
+
+Each wallet has its own code. The code identifies the referrer; it does not give anyone control over that wallet. Referral totals are associated with public wallet addresses.
+
+## Register an invitation
+
+1. Open your friend's link. Walletor remembers the first valid invite in that browser for up to 30 days.
+2. Connect a new wallet and open the Referral page before requesting your first swap quote.
+3. Choose **Register referral** and sign the free, clearly labelled Walletor message. This signature does not authorize a transaction or move funds.
+4. Complete your first verified, fee-bearing Walletor swap valued at **$5.00 or more**.
+
+Registration requires a wallet that supports message signing. It cannot be added retroactively after trading or changed to another referrer. Another device or browser needs the invite link again until registration has been confirmed on the server.
+
+## 100 WLT Points
+
+The referrer receives **100 WLT Points once per qualified referred wallet**. Sharing, link visits, wallet connections, signatures alone, failed swaps, and swaps below the eligibility threshold do not award the bonus. Smaller swaps do not qualify; a later first eligible swap can qualify when registration happened before trading.
+
+The bonus is recorded with verified swap accounting and an immutable referral reward record. Retrying the same transaction or making more trades from that referred wallet does not create another referral bonus. The referred wallet still earns its ordinary eligible-swap points; the 100-point bonus goes to the referrer.
+
+WLT Points are off-chain reward units, not transferable WLT tokens, USDC commission, or guaranteed monetary value.
+
+## Daily lucky-draw boost
+
+Each qualified referral adds **10% to the referrer's lucky-draw weight for the round in which it qualifies**, capped at **50% per round**. The referrer must also complete their own eligible swap in that round. Boosts do not carry over into another daily round and do not alter the top two fee-contribution leader rankings.
+
+For the V4 referral draw rule:
+
+```text
+boost basis points = min(qualified referrals in the round, 5) × 1,000
+base lucky weight = the existing fee-contribution weight after its median cap
+boosted lucky weight = floor(base lucky weight × (10,000 + boost basis points) / 10,000)
+```
+
+A 50% weight boost does not guarantee a win or mean an additional 50 percentage points of winning probability. Other wallets' weights and unique-winner selection also matter.
+
+The server stores the activation boundary at the first midnight UTC after referral deployment. The Referral page displays that time. V4 applies only to rounds starting on or after that boundary; existing rounds retain V3 and all earlier results remain unchanged. Daily rounds close at 00:00 UTC.
+
+The locked V4 snapshot includes each participant's referral boost and final weight in its proof commitment. Fee-leader shares remain 20% and 10%; lucky winners share 70%. The USDC claim fee remains 2.50%. See [How we pick the winners](/prize-pool/how-we-pick-winners/).
+
+## Abuse and privacy
+
+Self-referrals and duplicate rewards are not allowed. The same wallet cannot refer itself, and each referred wallet can be attributed only once. These controls do not prove that different wallets belong to different people. Creating wallets to refer yourself is not permitted.
+
+Walletor stores referral codes, wallet attribution, a short-lived signature challenge, the qualifying transaction, the bonus record, and the round used for the boost. It does not request seed phrases or private keys. Referral records follow the platform's access controls and pending retention-policy work; they are not silently erased when a browser clears its invite storage.

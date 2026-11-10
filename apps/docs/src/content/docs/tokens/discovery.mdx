@@ -1,0 +1,33 @@
+---
+title: Discovery & routing
+description: How Walletor finds new Solana tokens and decides whether they can be swapped.
+---
+
+Walletor keeps token discovery and swap authority separate. Finding a token does not mean a route exists.
+
+## New-token discovery
+
+Walletor uses a confirmed Helius webhook watching the official Pump.fun program to add new launches to its D1 search index. This avoids relying on a small polling window that can miss launches during high-volume periods.
+
+The incoming event is validated before storage, including the Solana addresses, transaction signature, instruction discriminator, instruction fields, and metadata URI.
+
+## Metadata enrichment
+
+Jupiter Tokens V2 supplies indexed information such as name, symbol, image URL, verification state, activity, price, and liquidity when available. Walletor can search Jupiter directly by mint when a user pastes an address.
+
+Metadata and routing are separate pipelines. A market can become routable before complete metadata is available.
+
+## Tradability source of truth
+
+Jupiter `/swap/v2/order` is the source of truth for whether the chosen pair and amount are tradable now. Walletor enables the swap action only after Jupiter returns an executable order.
+
+## Pump.fun lifecycle
+
+- Pre-migration bonding-curve tokens can be routed through Jupiter when an order exists.
+- Graduated pools are picked up automatically after migration.
+- A token that does not graduate may drop out of routing after Jupiter's age-based grace period.
+- A token remaining visible in search does not guarantee an active route.
+
+## Image fallbacks
+
+Token publishers control much of their metadata. Walletor attempts Jupiter metadata first and can use Helius enrichment for exact mint lookups. If a remote image is missing, malformed, blocked, or unavailable, the interface shows a stable text fallback instead of breaking token identity.
