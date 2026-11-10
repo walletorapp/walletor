@@ -26,8 +26,9 @@ running integrations; publishing this source does not provide production access.
 
 ## Local setup
 
-Requirements: Node.js 22.12 or newer and npm. Solana/Rust tools are needed only to
-build the on-chain programs.
+Requirements: Node.js 22.12 or newer and npm 11.17.0, the version used for the
+lockfile and CI. With an older npm installation, run `npm install --global npm@11.17.0`
+first. Solana/Rust tools are needed only to build the on-chain programs.
 
 ```sh
 npm ci
